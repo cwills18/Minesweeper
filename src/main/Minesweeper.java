@@ -1,3 +1,5 @@
+
+
 import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -27,7 +29,7 @@ public class Minesweeper {
                 boolean gameOver = playingBoard.checkSquareForMine(coordinates);
                 if (gameOver) {
                     gameInProgress = false;
-                    System.out.println("\nOh no, you hit a mine. Better luck next time.\n");
+                    System.out.println("\nBOOM! Oh no, you hit a mine. Better luck next time.\n");
                     break;
                 }
                 boolean victory = playingBoard.noMoreSquares();
@@ -45,7 +47,7 @@ public class Minesweeper {
 
     public static void configureBoardSize() {
         String size = input.next();
-        while (size.length() > 4 || size.equals("0") || size.endsWith("00") || size.startsWith("00")){
+        while (size.length() > 4 || size.equals("0") || size.endsWith("00") || size.startsWith("00") || size.contains("-")){
             System.out.println("Oops. Your grid size is in the wrong format. Please try again.");
             size = input.next();
         }
@@ -86,8 +88,8 @@ public class Minesweeper {
         System.out.println("\nYour grid has "+ playingBoard.getNumSquares() + " squares.");
         System.out.println("Enter the number of mines you would like to place in your minefield.\n");
         int mineNo = input.nextInt();
-        while (mineNo > playingBoard.getNumSquares()){
-            System.out.printf("Sorry, you can't have that many mines in a field of %d squares. Please enter a smaller number.\n", playingBoard.getNumSquares());
+        while (mineNo < 0 || mineNo > playingBoard.getNumSquares()){
+            System.out.printf("\nSorry, you can't have that many mines. Please enter a number between 1 and %d.\n", playingBoard.getNumSquares());
             mineNo = input.nextInt();
         }
         playingBoard.setMines(mineNo);
@@ -135,7 +137,7 @@ public class Minesweeper {
     }
 
     public static boolean playAgain(){
-        System.out.println("Enter N to start a new game.\n");
+        System.out.println("Enter N to start a new game or anything else to exit.\n");
         String answer = input.next().toLowerCase();
         return answer.equals("n");
     }

@@ -1,3 +1,5 @@
+
+
 public class OrdinaryCell extends Cell{
 
     protected int surroundingMines;

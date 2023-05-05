@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Board {
@@ -75,13 +74,15 @@ public class Board {
         int cellIdentifier = 1;
         for (int i = 0; i<this.height; i++){
             for (int j = 0; j<this.width; j++) {
-                if (mineCellLocations.contains(cellIdentifier)){
-                    board[i][j] = new Mine(cellIdentifier);
-                    cellIdentifier++;
-                } else {
-                    board[i][j] = new OrdinaryCell(cellIdentifier);
-                    cellIdentifier++;
-                }
+                board[i][j] = mineCellLocations.contains(cellIdentifier) ? new Mine(cellIdentifier) : new OrdinaryCell(cellIdentifier);
+                cellIdentifier++;
+//                if (mineCellLocations.contains(cellIdentifier)){
+//                    board[i][j] = new main.java.Mine(cellIdentifier);
+//                    cellIdentifier++;
+//                } else {
+//                    board[i][j] = new main.java.OrdinaryCell(cellIdentifier);
+//                    cellIdentifier++;
+//                }
             }
         }
         this.setBoard(board);
@@ -199,9 +200,9 @@ public class Board {
         //selects new cells, it will add any that have a zero to an array to come back to
         //later and repeat the same steps
         //function will continue in while loop while array is not empty;
-        int[] startingVals = new int[]{initialRow, initialCol};
+        int[] startingValues = new int[]{initialRow, initialCol};
         ArrayList<int[]> cellsAwaitingCascade = new ArrayList<>();
-        cellsAwaitingCascade.add(startingVals);
+        cellsAwaitingCascade.add(startingValues);
         boolean cascading = true;
         while (cascading) {
             if (cellsAwaitingCascade.size() == 0){
