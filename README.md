@@ -1,2 +1,2 @@
-# Minesweeper
-Old school Minesweeper game played in the command line.
+# main.java.Minesweeper
+Old school main.java.Minesweeper game played in the command line.
