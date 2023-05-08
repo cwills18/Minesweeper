@@ -4,8 +4,8 @@ public abstract class Cell {
     private int identifier;
     private boolean isMine;
     protected String trueValue;
-    private boolean isSelected;
-    private boolean isFlagged;
+    protected boolean isSelected;
+    protected boolean isFlagged;
 
 
     protected Cell(int identifier, boolean isMine, String trueVal){
@@ -22,7 +22,7 @@ public abstract class Cell {
     protected String getTrueValue(){
         return this.trueValue;
     };
-    private void setTrueValue(String value){
+    protected void setTrueValue(String value){
         this.trueValue = value;
     }
     protected boolean isSelected(){
