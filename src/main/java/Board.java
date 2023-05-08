@@ -5,8 +5,8 @@ public class Board {
     private final int height;
     private final int numSquares;
     private int numMines;
-    private int playableSquares;
-    private ArrayList<Integer> mineCellLocations;
+    protected int playableSquares;
+    protected ArrayList<Integer> mineCellLocations;
     private Cell[][] boardConfiguration;
     private int selectedSquares;
     //note that like the real game, "minesRemaining" will reduce by 1 each time the player
@@ -76,13 +76,6 @@ public class Board {
             for (int j = 0; j<this.width; j++) {
                 board[i][j] = mineCellLocations.contains(cellIdentifier) ? new Mine(cellIdentifier) : new OrdinaryCell(cellIdentifier);
                 cellIdentifier++;
-//                if (mineCellLocations.contains(cellIdentifier)){
-//                    board[i][j] = new main.java.Mine(cellIdentifier);
-//                    cellIdentifier++;
-//                } else {
-//                    board[i][j] = new main.java.OrdinaryCell(cellIdentifier);
-//                    cellIdentifier++;
-//                }
             }
         }
         this.setBoard(board);
